@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Descripion" content="Your gate to read Manhwa/Manha/Manga/Comics" />
+    <title>Gmanga</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="StyelSheet.css">
+    
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="images/logo.jpg" alt="Logo" width="60" class="rounded-circle" class="me-2">
+                Gmanga
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#">Manga</a></li>
+                            <li><a class="dropdown-item" href="#">Manhwa</a></li>
+                            <li><a class="dropdown-item" href="#">Manhua</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                            Genres
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Romance</a></li>
+                            <li><a class="dropdown-item" href="#">Fantasy</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="d-flex align-items-center" >
+                    <div id="searchWrapper">
+                        <button id="searchIcon" class="rounded-circle">🔍</button>
+                            <input type="text"id="searchInput"/>
+                        </div>
+                    </div>
+                
+                <div class="d-flex gap-2">
+                    
+                    <button class="btn btn-outline-light" data-bs-toggle="modal" data-bs-target="#signInModal">
+                        Sign In
+                    </button>
+                    <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#signUpModal">
+                        Sign Up
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+<!-- Sign In Modal -->
+<div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title">Sign in</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="signin.php" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control bg-dark text-light" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control bg-dark text-light" required>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="rememberMe">
+                            <label class="form-check-label" for="rememberMe">Remember Me</label>
+                        </div>
+                        <a href="#" class="text-primary text-decoration-none">Forgot Password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">log in</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Sign Up Modal -->
+<div class="modal fade" id="signUpModal" tabindex="-1" aria-labelledby="signUpModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content bg-dark text-light">
+            <div class="modal-header border-secondary">
+                <h5 class="modal-title">Sign up</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form action="signup.php" method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" name="fullname" class="form-control bg-dark text-light" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email"  class="form-control bg-dark text-light" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input type="password" name="password" class="form-control bg-dark text-light" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Confirm Password</label>
+                        <input type="password" name="confirm_password" class="form-control bg-dark text-light" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    <!-- carousel -->
+    <div class="container my-5">
+        <h3 class="mb-4">Trending Manhwa</h3>
+
+            <div id="manhwaCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+        
+                <div class="carousel-item active">
+                <div class="d-flex justify-content-between flex-wrap gap-3">
+        
+                    <!-- CARD 1 -->
+                    <div class="manhwa-card">
+                    <img src="images/magic emperor.jpg" alt="manhwa">
+                    <div class="manhwa-content">
+                        <div>
+                        <a href="https://mangarose.net/manga/magic-emperor/" target="_blank"><h6>Magic Emperor</h6></a>
+                        <small>April 7, 2025</small>
+                        </div>
+                        <div class="d-flex gap-2">
+                        <button class="chapter-btn">683</button>
+                        <button class="chapter-btn">682</button>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- CARD 2 -->
+                    <div class="manhwa-card">
+                    <img src="images/Eleceed.jpg" alt="manhwa">
+                    <div class="manhwa-content">
+                        <div>
+                        <a href="https://www.olympustaff.com/series/ECD" target="_blank"><h6>Eleceed</h6></a>
+                        <small>May 6, 2025</small>
+                        </div>
+                        <div class="d-flex gap-2">
+                        <button class="chapter-btn">349</button>
+                        <button class="chapter-btn">348</button>
+                        </div>
+                    </div>
+                    </div>
+                    <!-- CARD 3 -->
+                    <div class="manhwa-card">
+                        <img src="images/i Shall Master This Family.webp" alt="manhwa">
+                        <div class="manhwa-content">
+                            <div>
+                            <a href="https://dilar.tube/mangas/171/ill-be-the-matriarch-in-this-life" target="_blank"><h6>I Shall Master This Family</h6></a>
+                            <small>May 9, 2025</small>
+                            </div>
+                            <div class="d-flex gap-2">
+                            <button class="chapter-btn">182</button>
+                            <button class="chapter-btn">181</button>
+                            </div>
+                        </div>
+                        </div>
+                    <!-- CARD 4 -->
+                    <div class="manhwa-card">
+                    <img src="images/Death_Is_The_Only_Ending_For_The_Villain.webp" alt="manhwa">
+                    <div class="manhwa-content">
+                        <div>
+                        <a href="https://dilar.tube/mangas/934/death-is-the-only-ending-for-the-villain" target="_blank"><h6>Death Is The Only Ending For The Villain</h6></a>
+                        <small>May 5, 2025</small>
+                        </div>
+                        <div class="d-flex gap-2">
+                        <button class="chapter-btn">171</button>
+                        <button class="chapter-btn">170</button>
+                        </div>
+                    </div>
+                    </div>
+                </div></div>
+                    
+                <div class="carousel-item">
+                <div class="d-flex justify-content-between flex-wrap gap-3">
+        
+                    <!-- CARD 5 -->
+                    <div class="manhwa-card">
+                        <img src="images/The Guy Upstairs.webp" alt="manhwa">
+                        <div class="manhwa-content">
+                            <div>
+                            <a href="https://dilar.tube/mangas/4438/the-guy-upstairs" target="_blank"><h6>The Guy Upstairs</h6></a>
+                            <small>June 22, 2024</small>
+                            </div>
+                            <div class="d-flex gap-2">
+                            <button class="chapter-btn">51</button>
+                            <button class="chapter-btn">52</button>
+                            </div>
+                        </div>
+                        </div>
+                        <!-- CARD 6 -->
+                        <div class="manhwa-card">
+                            <img src="images/I’m Not That Kind of Talent.webp" alt="manhwa">
+                            <div class="manhwa-content">
+                                <div>
+                                <a href="https://dilar.tube/mangas/4568/im-not-that-kind-of-talent" target="_blank"><h6>I’m Not That Kind of Talent</h6></a>
+                                <small>May 5, 2024</small>
+                                </div>
+                                <div class="d-flex gap-2">
+                                <button class="chapter-btn">75</button>
+                                <button class="chapter-btn">74</button>
+                                </div>
+                            </div>
+                            </div>
+                            <!-- CARD 7 -->
+                            <div class="manhwa-card">
+                                <img src="images/Omniscient Reader.jpg" alt="manhwa">
+                                <div class="manhwa-content">
+                                    <div>
+                                    <a href="https://www.olympustaff.com/series/OR" target="_blank"><h6>Omniscient Reader</h6></a>
+                                    <small>May 7, 2025</small>
+                                    </div>
+                                    <div class="d-flex gap-2">
+                                    <button class="chapter-btn">261</button>
+                                    <button class="chapter-btn">260</button>
+                                    </div>
+                                </div>
+                                </div>
+                                <!-- CARD 8 -->
+                                <div class="manhwa-card">
+                                    <img src="images/Serena.webp" alt="manhwa">
+                                    <div class="manhwa-content">
+                                        <div>
+                                        <a href="https://dilar.tube/mangas/4464/serena" target="_blank"><h6>Serena</h6></a>
+                                        <small>May 10, 2025</small>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                        <button class="chapter-btn">110</button>
+                                        <button class="chapter-btn">109</button>
+                                        </div>
+                                    </div>
+                                    </div></div></div>
+            <!-- Button-->
+            <button class="carousel-control-next" type="button" data-bs-target="#manhwaCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        
+            </div>
+        </div></div>
+        <!-- Content -->
+<div class="container py-4">
+    <h2 class="mb-4">Manhwa List</h2>
+    <div class="row g-4">
+        <div class="row g-4 ">
+        <!-- Card 1 -->
+        <div class="col-md-2">
+            <div class="manga-card p-2">
+            <img src="images/Solo_Leveling.jpeg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://olympustaff.com/series/SL" target="_blank"><h6>Solo Leveling</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">110</span>
+                <span class="badge bg-light text-dark">111</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating"style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 2 -->
+        <div class="col-md-2">
+            <div class="manga-card p-2">
+            <img src="images/Return_of_the_Mount_Hua_Sect.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://lekmanga.net/manga/return-of-the-mount-hua-sect/" target="_blank"> <h6>Return of the Mount Hua Sect</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">150</span>
+                <span class="badge bg-light text-dark">151</span>
+                <div class="mt-2">
+                <span class="badge badge-new" >NEW</span>
+                <span class="rating" style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 3-->
+        <div class="col-md-2">
+            <div class="manga-card p-2">
+            <img src="images/The_World’s_Best_Engineer.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://lekmanga.net/manga/the-worlds-best-engineer/" target="_blank"><h6>The World’s Best Engineer</h6></a>
+                <p class="mb-1 small text-muted">10 may 2025</p>
+                <span class="badge bg-light text-dark me-1">240</span>
+                <span class="badge bg-light text-dark">241</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating"style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 4 -->
+        <div class="col-md-2 ">
+            <div class="manga-card p-2">
+            <img src="images/Sweet_Home.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://dilar.tube/mangas/25/sweet-home" target="_blank"><h6>Sweet Home</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating" style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="row g-4">
+        <!-- Card 5 -->
+        <div class="col-md-2">
+            <div class="manga-card p-2">
+            <img src="images/Death_Is_The_Only_Ending_For_The_Villain.webp" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://dilar.tube/mangas/934/death-is-the-only-ending-for-the-villain" target="_blank"><h6>Death Is The Only Ending For The Villain</h6></a>
+                <p class="mb-1 small text-muted">5 may 2025</p>
+                <span class="badge bg-light text-dark me-1">170</span>
+                <span class="badge bg-light text-dark">171</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating"style="color: gold;" >★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 6 -->
+        <div class="col-md-2">
+            <div class="manga-card p-2">
+            <img src="images/I_Raised_A_Black_Dragon.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://dilar.tube/mangas/2727/i-raised-a-black-dragon" target="_blank"><h6>I Raised A Black Dragon</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating" style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 7 -->
+        <div class="col-md-2">
+            <div class="manga-card p-2">
+            <img src="images/I’m_trapped_in_a_terrible_drama.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="" target="_blank"><h6>I’m trapped in a terrible drama</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating"style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 8 -->
+        <div class="col-md-2">
+            <div class="manga-card p-2">
+            <img src="images/White_Blood.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://dilar.tube/mangas/1653/white-blood" target="_blank"><h6>White Blood</h6></a> 
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating" style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="row g-4">
+        <!-- Card 9 -->
+        <div class="col-md-2">
+            <div class="manga-card p-2">
+            <img src="images/18-Year-Old_Villainess_ Target.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://dilar.tube/mangas/5448/18-year-old-villainess-target" target="_blank">   <h6>18-Year Old Villainess Target</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating" style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 10 -->
+        <div class="col-md-2 ">
+            <div class="manga-card p-2">
+            <img src="images/mom_sorry.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://lekmanga.net/manga/mother-im-sorry/" target="_blank"> <h6>Mom Sorry</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating"style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 11 -->
+        <div class="col-md-2">
+            <div class="manga-card p-2">
+            <img src="images/Please_Don't_Come_to_the_Villainess_Stationery_Store!.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://dilar.tube/mangas/3474/please-dont-come-to-the-villainess-stationery-shop" target="_blank"> <h6>Please Don't Come to the Villainess Stationery Store!</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating" style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 12 -->
+        <div class="col-md-2 ">
+            <div class="manga-card p-2">
+            <img src="images/Beware of the Villainess!.webp" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://dilar.tube/mangas/994/beware-of-the-villainess" target="_blank"><h6>Beware of the Villainess!</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating"style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div></div>
+        <div class="row g-4">
+        <!-- Card 13 -->
+        <div class="col-md-2 ">
+            <div class="manga-card p-2">
+            <img src="images/Doctor_Elise.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+            <a href="https://dilar.tube/mangas/794/doctor-elise" target="_blank"><h6>Doctor Elise</h6></a> 
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating" style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 14 -->
+            
+        <div class="col-md-2">
+            <div class="manga-card p-2">
+            <img src="images/Serena.webp" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://dilar.tube/mangas/4464/serena" target="_blank">  <h6>Serena</h6></a>
+                <p class="mb-1 small text-muted">10 May 2025</p>
+                <span class="badge bg-light text-dark me-1">109</span>
+                <span class="badge bg-light text-dark">110</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating"style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 15 -->
+        <div class="col-md-2 ">
+            <div class="manga-card p-2">
+            <img src="images/One_Day_I_Became_a_Princess.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://dilar.tube/mangas/249/one-day-i-became-a-princess" target="_blank"><h6>One Day I Became a Princess</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating" style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        <!-- Card 16 -->
+        <div class="col-md-2 ">
+            <div class="manga-card p-2">
+            <img src="images/How_to_Get_My_Husband_on_My_Side.jpg" class="w-100" alt="Manga Cover">
+            <div class="p-2">
+                <a href="https://dilar.tube/mangas/2463/how-to-get-my-husband-on-my-side" target="_blank" ><h6>How to Get My Husband on My Side</h6></a>
+                <p class="mb-1 small text-muted">22 April 2025</p>
+                <span class="badge bg-light text-dark me-1">50</span>
+                <span class="badge bg-light text-dark">51</span>
+                <div class="mt-2">
+                <span class="badge badge-new">NEW</span>
+                <span class="rating" style="color: gold;">★★★★☆</span>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+        <div class="row g-4 ">
+            <!-- Card 17 -->
+            <div class="col-md-2">
+                <div class="manga-card p-2">
+                <img src="images/The Guy Upstairs.webp" class="w-100" alt="Manga Cover">
+                <div class="p-2">
+                    <a href="https://olympustaff.com/series/SL" target="_blank"><h6>Solo_Leveling</h6></a>
+                    <p class="mb-1 small text-muted">22 April 2025</p>
+                    <span class="badge bg-light text-dark me-1">110</span>
+                    <span class="badge bg-light text-dark">111</span>
+                    <div class="mt-2">
+                    <span class="badge badge-new">NEW</span>
+                    <span class="rating"style="color: gold;">★★★★☆</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Card 18 -->
+            <div class="col-md-2">
+                <div class="manga-card p-2">
+                <img src="images/magic emperor.jpg" class="w-100" alt="Manga Cover">
+                <div class="p-2">
+                    <a href="https://mangarose.net/manga/magic-emperor/" target="_blank"><h6>Magic Emperor</h6></a>
+                    <p class="mb-1 small text-muted">7 April 2025</p>
+                    <span class="badge bg-light text-dark me-1">150</span>
+                    <span class="badge bg-light text-dark">151</span>
+                    <div class="mt-2">
+                    <span class="badge badge-new" >NEW</span>
+                    <span class="rating" style="color: gold;">★★★★☆</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Card 19-->
+            <div class="col-md-2">
+                <div class="manga-card p-2">
+                <img src="images/I’m Not That Kind of Talent.webp" class="w-100" alt="Manga Cover">
+                <div class="p-2">
+                    <a href="https://dilar.tube/mangas/4568/im-not-that-kind-of-talent" target="_blank"><h6>I’m Not That Kind of Talent</h6></a>
+                    <p class="mb-1 small text-muted">10 may 2025</p>
+                    <span class="badge bg-light text-dark me-1">240</span>
+                    <span class="badge bg-light text-dark">241</span>
+                    <div class="mt-2">
+                    <span class="badge badge-new">NEW</span>
+                    <span class="rating"style="color: gold;">★★★★☆</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Card 20 -->
+            <div class="col-md-2 ">
+                <div class="manga-card p-2">
+                <img src="images/The Return Of The Disaster-Class Hero.jpg" class="w-100" alt="Manga Cover">
+                <div class="p-2">
+                    <a href="https://www.olympustaff.com/series/DCH" target="_blank"><h6>The Return Of The Disaster-Class Hero</h6></a>
+                    <p class="mb-1 small text-muted">7 May 2025</p>
+                    <span class="badge bg-light text-dark me-1">124</span>
+                    <span class="badge bg-light text-dark">125</span>
+                    <div class="mt-2">
+                    <span class="badge badge-new">NEW</span>
+                    <span class="rating" style="color: gold;">★★★★☆</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        <div class="row g-4 ">
+            <!-- Card 21 -->
+            <div class="col-md-2">
+                <div class="manga-card p-2">
+                <img src="images/Trauma_Center.jpg" class="w-100" alt="Manga Cover">
+                <div class="p-2">
+                    <a href="https://lekmanga.net/?s=Trauma+Center&post_type=wp-manga" target="_blank"><h6>Trauma Center</h6></a>
+                    <p class="mb-1 small text-muted">22 April 2024</p>
+                    <span class="badge bg-light text-dark me-1">90</span>
+                    <span class="badge bg-light text-dark">91</span>
+                    <div class="mt-2">
+                    <span class="badge badge-new">NEW</span>
+                    <span class="rating"style="color: gold;">★★★★☆</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Card 22 -->
+            <div class="col-md-2">
+                <div class="manga-card p-2">
+                <img src="images/Eleceed.jpg" class="w-100" alt="Manga Cover">
+                <div class="p-2">
+                    <a href="https://www.olympustaff.com/series/ECD" target="_blank"><h6>Eleceed</h6></a>
+                    <p class="mb-1 small text-muted">7 April 2025</p>
+                    <span class="badge bg-light text-dark me-1">348</span>
+                    <span class="badge bg-light text-dark">349</span>
+                    <div class="mt-2">
+                    <span class="badge badge-new" >NEW</span>
+                    <span class="rating" style="color: gold;">★★★★☆</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Card 23-->
+            <div class="col-md-2">
+                <div class="manga-card p-2">
+                <img src="images/Omniscient Reader.jpg" class="w-100" alt="Manga Cover">
+                <div class="p-2">
+                    <a href="https://www.olympustaff.com/series/OR" target="_blank"><h6>Omniscient Reader</h6></a>
+                    <p class="mb-1 small text-muted">10 may 2025</p>
+                    <span class="badge bg-light text-dark me-1">261</span>
+                    <span class="badge bg-light text-dark">262</span>
+                    <div class="mt-2">
+                    <span class="badge badge-new">NEW</span>
+                    <span class="rating"style="color: gold;">★★★★☆</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- Card 24 -->
+            <div class="col-md-2 ">
+                <div class="manga-card p-2">
+                <img src="images/i Shall Master This Family.webp" class="w-100" alt="Manga Cover">
+                <div class="p-2">
+                    <a href="https://dilar.tube/mangas/171/ill-be-the-matriarch-in-this-life" target="_blank"><h6>I Shall Master This Family</h6></a>
+                    <p class="mb-1 small text-muted">22 April 2025</p>
+                    <span class="badge bg-light text-dark me-1">50</span>
+                    <span class="badge bg-light text-dark">51</span>
+                    <div class="mt-2">
+                    <span class="badge badge-new">NEW</span>
+                    <span class="rating" style="color: gold;">★★★★☆</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        
+            </div>
+</div>
+
+    <!-- Footer -->
+<footer class="gmanga-footer">
+    <div class="container py-4" >
+        <div class="row g-4">
+            <!-- Information Section -->
+            <div class="col-md-4">
+                <h5 class="text-danger mb-3">Information</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">• <a href="#" class="text-white text-decoration-none">Suggestions & Support</a></li>
+                    <li class="mb-2">• <a href="#" class="text-white text-decoration-none">Terms of Use</a></li>
+                    <li class="mb-2">• <a href="#" class="text-white text-decoration-none">Rules</a></li>
+                    <li>• <a href="#" class="text-white text-decoration-none">About Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Support Section -->
+            <div class="col-md-4">
+                <h5 class="text-danger mb-3">Support</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2">• <a href="#" class="text-white text-decoration-none">FAQ</a></li>
+                    <li class="mb-2">• <a href="#" class="text-white text-decoration-none">Contact</a></li>
+                    <li class="mb-2">• <a href="#" class="text-white text-decoration-none">Moderators</a></li>
+                    <li>• <a href="#" class="text-white text-decoration-none">Site Settings</a></li>
+                </ul>
+            </div>
+
+            <!-- Social Section -->
+            <div class="col-md-4">
+                <h5 class="text-danger mb-3">Social</h5>
+                <div class="d-flex gap-3">
+                    <a href="https://x.com/salomah_1" class="btn btn-outline-light rounded-pill px-3" target="_blank">
+                        <i class="fab fa-twitter"></i> Twitter
+                    </a>
+                    <a href="https://github.com/salmakandill" class="btn btn-outline-light rounded-pill px-3" target="_blank">
+                        <i class="fab fa-gitHup"></i> GitHup
+                    </a>
+                    <a href="https://discord.com/channels/@me" class="btn btn-outline-light rounded-pill px-3" target="_blank">
+                        <i class="fab fa-discord"></i> Discord
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+		<div class="text-center mt-4 pt-3 border-top border-secondary">
+            <p>&copy; 2025 | All rights reserved by <span style="color: #2053c9">Salma Osama</span></p>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="JavaScript_File.js"></script>
+	
+</body>
+</html>
