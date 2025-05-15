@@ -13,13 +13,13 @@ if ($result->num_rows === 1) {
     $user = $result->fetch_assoc();
 
     if (password_verify($password, $user['password'])) {
-        echo "Welcome, " . htmlspecialchars($user['fullname']) . "!";
+         echo "Welcome Back , " . htmlspecialchars($user['fullname']) . " ! 🙋‍♀️";
 
     } else {
-        echo "Incorrect password!";
+        echo "❌ Incorrect password!";
     }
 } else {
-    echo "Email not found!";
+    echo "❌ Email not found!";
 }
 
 $stmt->close();
